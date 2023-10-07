@@ -63,6 +63,23 @@ async def command_start_handler(message: types.Message):
     await message.reply("Hi Dibya clear all your previous conversatioin. So rest assure.")
 
 
+@dispatcher.message_handler()
+async def chatgpt(message: types.Message):
+    """
+    A handelr to process the user's input and generate a response using the ChatGPT AI
+    """
+    print(f">>> USER: \n\t{message.text}")
+    response = openai.ChatCompletion.create(
+        model = MODEL_NAME,
+        message = [
+            {"role": "assistant", "content": reference.response}, # role assistant
+            {"role": "user", "content": message.text} # Our query
+        ]
+    )
+    reference.response = response['choices'][0]['message']['content']
+    print(f">>> chatGPT: \n\t{reference.response}")
+    await bot.send_message(chat_id = message.chat.id, text = reference.response)
+
 
 if __name__ == "__main__":
     executor.start_polling(dispatcher, skip_updates=True)
