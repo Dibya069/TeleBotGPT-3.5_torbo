@@ -6,7 +6,7 @@ To follow this tutorial, you will need:
 
 - Python 3.7 or higher
 - A Telegram account and a smartphone
-- An OpenAI account and an API key
+- An OpenAI account and an API key  `But to work as an AI we need to credit some ammount inform of dollar($) to OpenAI`
 
 
 ## Telegram setup:
